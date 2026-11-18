@@ -54,7 +54,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 <header class="hero"><div class="wrap">
   <div class="eyebrow">Research group beta session</div>
   <h1>Test PLATO with us</h1>
-  <p>PLATO brings Greater Cambridge's evidence base, Local Plan and planning applications into one map and one assistant. You are its first testers. For the next hour, use it as a planner and as a local resident, then tell us what worked and what did not.</p>
+  <p>PLATO brings Greater Cambridge's evidence base, Local Plan and planning applications into one map and one assistant. You are its first testers. For the next hour, connect it to your own research, use it as a local resident would, then tell us what worked and what did not.</p>
   <p><a class="pill" href="https://platoplanning.org/" target="_blank" rel="noopener">Open PLATO</a> &nbsp; <a class="pill ghost" href="#feedback">Give feedback</a></p>
   <p style="font-size:.95rem;color:#d8dcf5">Access code: <b style="color:#fff;letter-spacing:.04em">greatercam</b>. Keep PLATO open in its own tab for the whole hour, including the discussion.</p>
 </div></header>
@@ -63,7 +63,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
   <h2>The hour</h2>
   <div class="agenda" id="agenda">
     <div class="phase" data-p="0"><div class="t">0 to 15 min</div><h3>Introduction</h3><p>AI in planning, how PLATO works, and what we want to learn from you.</p></div>
-    <div class="phase" data-p="1"><div class="t">15 to 30 min</div><h3>Task 1: planner</h3><p>Ten minutes on PLATO as a city planner, then five minutes of feedback.</p></div>
+    <div class="phase" data-p="1"><div class="t">15 to 30 min</div><h3>Task 1: your research</h3><p>Ten minutes connecting PLATO to your own research, then five minutes of feedback.</p></div>
     <div class="phase" data-p="2"><div class="t">30 to 45 min</div><h3>Task 2: resident</h3><p>Ten minutes on PLATO as a local resident, then five minutes of feedback.</p></div>
     <div class="phase" data-p="3"><div class="t">45 to 60 min</div><h3>Discussion</h3><p>We look at everyone's feedback together, with PLATO open to show what you mean.</p></div>
   </div>
@@ -76,12 +76,12 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
   <h2>The two tasks</h2>
   <p class="lead">Each task has ten minutes on PLATO and five minutes to note your feedback. This is not homework: say out loud whatever you think as you go. Work on your own or in pairs.</p>
   <div class="tasks">
-    <div class="task"><span class="tag">Task 1 · 10 minutes</span><h3>Imagine you are a city planner in Cambridge</h3>
-      <p><b>What do you want to know?</b> From the platform, which information is helpful, and which is not?</p>
-      <details><summary>If you want a starting point</summary><ol><li>Choose <b>Planner</b> on the landing page.</li>
-        <li>Find the plan's housing need and how much has been delivered so far.</li>
-        <li>Pick one growth area and check what schools, GPs, transport and planning applications are there.</li>
-        <li>Ask the assistant a question you would need answered in an officer report, and follow its source.</li></ol></details></div>
+    <div class="task"><span class="tag">Task 1 · 10 minutes</span><h3>Connect PLATO to your own research</h3>
+      <p><b>What on the platform relates to your research?</b> Which information is helpful for it, which is not, and what would you need that is missing?</p>
+      <details><summary>If you want a starting point</summary><ol><li>Pick the part of PLATO closest to your topic: housing, transport, environment, infrastructure, health, or the planning documents themselves.</li>
+        <li>Find one piece of evidence you could use in your own work, and check where it comes from.</li>
+        <li>Ask the assistant a question from your research, and follow its source: would you cite it?</li>
+        <li>Think about what you would need to do next: download the data, combine it with your own, or compare it over time.</li></ol></details></div>
     <div class="task"><span class="tag">Task 2 · 10 minutes</span><h3>Imagine you are a local resident in Cambridge</h3>
       <p><b>What do you want to know?</b> From the platform, which information is helpful, and which is not? And how could PLATO help make the public's voice heard?</p>
       <details><summary>If you want a starting point</summary><ol><li>Choose <b>Resident</b> on the landing page.</li>
@@ -96,7 +96,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
   <p class="lead">Tick the features you tried, and say what you liked and what could improve for each. You can submit after each task or once at the end. Your name is optional; everyone in the session sees the feedback in the discussion.</p>
   <form id="fb" onsubmit="return false">
     <div class="row"><label for="fName">Name (optional)</label><input type="text" id="fName" maxlength="60"></div>
-    <div class="row"><label for="fTask">Which task</label><select id="fTask"><option value="Planner">Task 1: planner</option><option value="Resident">Task 2: resident</option><option value="Both">Both</option></select></div>
+    <div class="row"><label for="fTask">Which task</label><select id="fTask"><option value="Research">Task 1: your research</option><option value="Resident">Task 2: resident</option><option value="Both">Both</option></select></div>
     <label>Features you tried</label>
     <div class="feats" id="feats"></div>
     <div id="fboxes"></div>
@@ -105,6 +105,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
       <div><label>How far would you trust its answers?</label><div class="scale" id="sTrust"></div><small class="msg">1 not at all, 5 completely</small></div>
     </div>
     <div class="two"><div><label for="fUse">Information that was helpful</label><textarea id="fUse" maxlength="400"></textarea></div><div><label for="fUseless">Information that was not useful</label><textarea id="fUseless" maxlength="400"></textarea></div></div>
+    <div class="row" style="display:block"><label for="fRes">How could PLATO feed into your research? (Task 1)</label><textarea id="fRes" maxlength="400"></textarea></div>
     <div class="row" style="display:block"><label for="fMissing">What did you want to know that PLATO could not tell you?</label><textarea id="fMissing" maxlength="400"></textarea></div>
     <div class="row" style="display:block"><label for="fVoice">How could PLATO help make the public's voice heard? (Task 2)</label><textarea id="fVoice" maxlength="400"></textarea></div>
     <div class="row" style="display:block"><label for="fBug">Bugs or errors (what you did, and what happened)</label><textarea id="fBug" maxlength="400"></textarea></div>
@@ -115,7 +116,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 <section class="soft" id="results"><div class="wrap">
   <h2>What the group thinks</h2>
   <p class="lead">Updates every 20 seconds. This is what we discuss in the last 15 minutes.</p>
-  <div class="row"><button class="pill ghost" id="rGo">Refresh now</button> <label for="rTask" style="margin-left:12px">Show</label> <select id="rTask"><option value="">All tasks</option><option value="Planner">Planner</option><option value="Resident">Resident</option><option value="Both">Both</option></select></div>
+  <div class="row"><button class="pill ghost" id="rGo">Refresh now</button> <label for="rTask" style="margin-left:12px">Show</label> <select id="rTask"><option value="">All tasks</option><option value="Research">Your research</option><option value="Resident">Resident</option><option value="Both">Both</option></select></div>
   <div class="stats" id="rStats"></div>
   <h3>Features tried</h3><div id="rBars"></div>
   <h3 style="margin-top:20px">By feature</h3><div id="rFeat"></div>
@@ -156,10 +157,10 @@ $('fGo').onclick=async()=>{ const name=$('fName').value.trim()||null, task=$('fT
   const fs=[...document.querySelectorAll('.fbox')].map(b=>({k:b.dataset.k,o:(b.querySelector('.o')||{}).value||'',l:b.querySelector('.l').value.trim(),i:b.querySelector('.i').value.trim()}));
   if(!fs.length){ $('fMsg').textContent='Tick at least one feature you tried.'; return; }
   const rows=fs.map(f=>({course:COURSE,exercise:EX,author:name,body:JSON.stringify({t:'feature',pid,task,...f})}));
-  rows.push({course:COURSE,exercise:EX,author:name,body:JSON.stringify({t:'overall',pid,task,ease:SC.sEase||null,trust:SC.sTrust||null,missing:$('fMissing').value.trim(),bug:$('fBug').value.trim(),use:$('fUse').value.trim(),useless:$('fUseless').value.trim(),voice:$('fVoice').value.trim(),tried:fs.map(f=>f.k)})});
+  rows.push({course:COURSE,exercise:EX,author:name,body:JSON.stringify({t:'overall',pid,task,ease:SC.sEase||null,trust:SC.sTrust||null,missing:$('fMissing').value.trim(),bug:$('fBug').value.trim(),use:$('fUse').value.trim(),useless:$('fUseless').value.trim(),voice:$('fVoice').value.trim(),res:$('fRes').value.trim(),tried:fs.map(f=>f.k)})});
   $('fMsg').textContent='Sending';
   try{ const r=await fetch(CFG.url+'/rest/v1/posts',{method:'POST',headers:{...H,Prefer:'return=minimal'},body:JSON.stringify(rows)});
-    if(r.ok){ $('fMsg').textContent='Thank you. Your feedback is in.'; document.querySelectorAll('#feats input').forEach(i=>i.checked=false); boxes(); ['fMissing','fBug','fUse','fUseless','fVoice'].forEach(i=>$(i).value=''); load(); }
+    if(r.ok){ $('fMsg').textContent='Thank you. Your feedback is in.'; document.querySelectorAll('#feats input').forEach(i=>i.checked=false); boxes(); ['fMissing','fBug','fUse','fUseless','fVoice','fRes'].forEach(i=>$(i).value=''); load(); }
     else $('fMsg').textContent='That did not send. Try again in a moment.'; }catch(_){ $('fMsg').textContent='That did not send. Try again in a moment.'; } };
 // results
 async function load(){ try{ const r=await fetch(CFG.url+'/rest/v1/posts?select=author,body,created_at&course=eq.'+COURSE+'&exercise=eq.'+EX+'&order=created_at.asc',{headers:H}); const raw=await r.json();
@@ -171,13 +172,13 @@ async function load(){ try{ const r=await fetch(CFG.url+'/rest/v1/posts?select=a
   $('rFeat').innerHTML=FEATS.filter(f=>cnt[f[0]]).map(f=>{ const xs=ft.filter(x=>x.k===f[0]); const li=(arr,key)=>arr.filter(x=>x[key]).map(x=>'<li>'+esc(x[key])+(f[0]==='other'&&x.o?' <span class="who">('+esc(x.o)+')</span>':'')+' <span class="who">'+esc(x.author||'Anonymous')+', '+esc(x.task)+'</span></li>').join('');
     const L=li(xs,'l'), I=li(xs,'i'); return '<div class="fres"><h4 style="margin:0 0 6px">'+f[1]+' <span class="who">tried '+xs.length+' times</span></h4>'+(L?'<b>Liked</b><ul class="lk">'+L+'</ul>':'')+(I?'<b>Could improve</b><ul class="im">'+I+'</ul>':'')+'</div>'; }).join('');
   const lst=(key,title)=>{ const it=ov.filter(x=>x[key]).map(x=>'<li>'+esc(x[key])+' <span class="who">'+esc(x.author||'Anonymous')+', '+esc(x.task)+'</span></li>').join(''); return it?'<div class="fres"><b>'+title+'</b><ul class="'+(key==='useless'?'im':'lk')+'">'+it+'</ul></div>':''; };
-  $('rInfo').innerHTML=(lst('use','Helpful information')+lst('useless','Information that was not useful')+lst('voice','Making the public voice heard'))||'<p class="msg">Nothing yet.</p>';
+  $('rInfo').innerHTML=(lst('use','Helpful information')+lst('useless','Information that was not useful')+lst('res','Connections to our research')+lst('voice','Making the public voice heard'))||'<p class="msg">Nothing yet.</p>';
   const ms=ov.filter(x=>x.missing).map(x=>'<li>'+esc(x.missing)+' <span class="who">'+esc(x.author||'Anonymous')+'</span></li>').join(''), bg=ov.filter(x=>x.bug).map(x=>'<li>'+esc(x.bug)+' <span class="who">'+esc(x.author||'Anonymous')+'</span></li>').join('');
   $('rOther').innerHTML='<div class="fres">'+(ms?'<b>Wanted to know, and PLATO could not tell</b><ul class="im">'+ms+'</ul>':'')+(bg?'<b>Bugs and errors</b><ul class="im">'+bg+'</ul>':'')+(!ms&&!bg?'<p class="msg">Nothing yet.</p>':'')+'</div>';
  }catch(_){ $('rStats').innerHTML='<p class="msg">Feedback could not be loaded.</p>'; } }
 $('rGo').onclick=load; $('rTask').onchange=load; load(); setInterval(load,20000);
 // session clock (presenter device)
-const PH=[[0,'Introduction'],[15,'Task 1: planner'],[30,'Task 2: resident'],[45,'Discussion'],[60,'Finished']];
+const PH=[[0,'Introduction'],[15,'Task 1: your research'],[30,'Task 2: resident'],[45,'Discussion'],[60,'Finished']];
 let t0=null, off=0; try{ t0=+localStorage.getItem('plato_t0')||null; off=+localStorage.getItem('plato_off')||0; }catch(_){}
 function tick(){ const now=Date.now(); if(!t0){ $('clk').textContent='60:00'; return; } const m=(now-t0)/60000+off; const p=PH.findIndex((x,i)=>m<(PH[i+1]?PH[i+1][0]:999))||0;
   const idx=Math.min(p,4); const end=idx<4?PH[idx+1][0]:60; const rem=Math.max(0,(end-m)*60); $('clk').textContent=String(Math.floor(rem/60)).padStart(2,'0')+':'+String(Math.floor(rem%60)).padStart(2,'0');
