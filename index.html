@@ -62,9 +62,9 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 <section class="soft"><div class="wrap">
   <h2>The hour</h2>
   <div class="agenda" id="agenda">
-    <div class="phase" data-p="0"><div class="t">0 to 15 min</div><h3>Introduction</h3><p>What PLATO is and what we want to learn from you.</p></div>
-    <div class="phase" data-p="1"><div class="t">15 to 30 min</div><h3>Task 1: planner</h3><p>Use PLATO as a planning officer would.</p></div>
-    <div class="phase" data-p="2"><div class="t">30 to 45 min</div><h3>Task 2: resident</h3><p>Use PLATO as someone who lives near a new development.</p></div>
+    <div class="phase" data-p="0"><div class="t">0 to 15 min</div><h3>Introduction</h3><p>AI in planning, how PLATO works, and what we want to learn from you.</p></div>
+    <div class="phase" data-p="1"><div class="t">15 to 30 min</div><h3>Task 1: planner</h3><p>Ten minutes on PLATO as a city planner, then five minutes of feedback.</p></div>
+    <div class="phase" data-p="2"><div class="t">30 to 45 min</div><h3>Task 2: resident</h3><p>Ten minutes on PLATO as a local resident, then five minutes of feedback.</p></div>
     <div class="phase" data-p="3"><div class="t">45 to 60 min</div><h3>Discussion</h3><p>We look at everyone's feedback together, with PLATO open to show what you mean.</p></div>
   </div>
   <div class="clock"><span class="big" id="clk">60:00</span><span id="clkLab" class="msg">Session not started</span>
@@ -74,22 +74,20 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 
 <section><div class="wrap">
   <h2>The two tasks</h2>
-  <p class="lead">Work on your own or in pairs. There are no right answers: we want to see where PLATO helps, where it gets in the way, and where you stop trusting it. Note the features you use as you go.</p>
+  <p class="lead">Each task has ten minutes on PLATO and five minutes to note your feedback. This is not homework: say out loud whatever you think as you go. Work on your own or in pairs.</p>
   <div class="tasks">
-    <div class="task"><span class="tag">Task 1 · 15 minutes</span><h3>You are a planner</h3>
-      <p>You are a planning officer in Greater Cambridge, preparing to advise on new housing in one of the growth areas.</p>
-      <ol><li>Choose <b>Planner</b> on the landing page.</li>
+    <div class="task"><span class="tag">Task 1 · 10 minutes</span><h3>Imagine you are a city planner in Cambridge</h3>
+      <p><b>What do you want to know?</b> From the platform, which information is helpful, and which is not?</p>
+      <details><summary>If you want a starting point</summary><ol><li>Choose <b>Planner</b> on the landing page.</li>
         <li>Find the plan's housing need and how much has been delivered so far.</li>
-        <li>Pick one growth area. Check what schools, GPs, transport and other infrastructure are nearby, and which planning applications have been made there.</li>
-        <li>Ask the assistant a question you would need answered in an officer report. Follow its source: does the cited passage support the answer?</li>
-        <li>Note one thing you expected to find and could not.</li></ol></div>
-    <div class="task"><span class="tag">Task 2 · 15 minutes</span><h3>You are a local resident</h3>
-      <p>You live near a site where new homes are planned, and you have heard about it from a neighbour.</p>
-      <ol><li>Choose <b>Resident</b> on the landing page.</li>
-        <li>Find what is proposed near you: how many homes, where, and roughly when.</li>
-        <li>Find out whether there will be school places, a GP and transport for the new residents.</li>
-        <li>Ask a question in your own words, as a resident would, not a planner.</li>
-        <li>Decide whether you would trust the answer enough to repeat it at a residents' meeting, and why.</li></ol></div>
+        <li>Pick one growth area and check what schools, GPs, transport and planning applications are there.</li>
+        <li>Ask the assistant a question you would need answered in an officer report, and follow its source.</li></ol></details></div>
+    <div class="task"><span class="tag">Task 2 · 10 minutes</span><h3>Imagine you are a local resident in Cambridge</h3>
+      <p><b>What do you want to know?</b> From the platform, which information is helpful, and which is not? And how could PLATO help make the public's voice heard?</p>
+      <details><summary>If you want a starting point</summary><ol><li>Choose <b>Resident</b> on the landing page.</li>
+        <li>Find what is proposed near where you live: how many homes, where and roughly when.</li>
+        <li>Check whether there will be school places, a GP and transport for new residents.</li>
+        <li>Ask a question in your own words, and decide whether you would repeat the answer at a residents' meeting.</li></ol></details></div>
   </div>
 </div></section>
 
@@ -106,7 +104,9 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
       <div><label>How easy was PLATO to use?</label><div class="scale" id="sEase"></div><small class="msg">1 very hard, 5 very easy</small></div>
       <div><label>How far would you trust its answers?</label><div class="scale" id="sTrust"></div><small class="msg">1 not at all, 5 completely</small></div>
     </div>
-    <div class="row" style="display:block"><label for="fMissing">Anything you expected to find and could not?</label><textarea id="fMissing" maxlength="400"></textarea></div>
+    <div class="two"><div><label for="fUse">Information that was helpful</label><textarea id="fUse" maxlength="400"></textarea></div><div><label for="fUseless">Information that was not useful</label><textarea id="fUseless" maxlength="400"></textarea></div></div>
+    <div class="row" style="display:block"><label for="fMissing">What did you want to know that PLATO could not tell you?</label><textarea id="fMissing" maxlength="400"></textarea></div>
+    <div class="row" style="display:block"><label for="fVoice">How could PLATO help make the public's voice heard? (Task 2)</label><textarea id="fVoice" maxlength="400"></textarea></div>
     <div class="row" style="display:block"><label for="fBug">Bugs or errors (what you did, and what happened)</label><textarea id="fBug" maxlength="400"></textarea></div>
     <div class="row"><button class="pill" id="fGo">Submit feedback</button><span class="msg" id="fMsg"></span></div>
   </form>
@@ -119,7 +119,8 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
   <div class="stats" id="rStats"></div>
   <h3>Features tried</h3><div id="rBars"></div>
   <h3 style="margin-top:20px">By feature</h3><div id="rFeat"></div>
-  <h3 style="margin-top:20px">Missing, and bugs</h3><div id="rOther"></div>
+  <h3 style="margin-top:20px">Helpful and not useful information</h3><div id="rInfo"></div>
+  <h3 style="margin-top:20px">Gaps, and bugs</h3><div id="rOther"></div>
 </div></section>
 
 <footer><div class="wrap">PLATO: Platform for Land-use Analysis and Transparent Outcomes. Department of Land Economy, University of Cambridge. Feedback is stored for this session only and used to improve the platform.</div></footer>
@@ -155,10 +156,10 @@ $('fGo').onclick=async()=>{ const name=$('fName').value.trim()||null, task=$('fT
   const fs=[...document.querySelectorAll('.fbox')].map(b=>({k:b.dataset.k,o:(b.querySelector('.o')||{}).value||'',l:b.querySelector('.l').value.trim(),i:b.querySelector('.i').value.trim()}));
   if(!fs.length){ $('fMsg').textContent='Tick at least one feature you tried.'; return; }
   const rows=fs.map(f=>({course:COURSE,exercise:EX,author:name,body:JSON.stringify({t:'feature',pid,task,...f})}));
-  rows.push({course:COURSE,exercise:EX,author:name,body:JSON.stringify({t:'overall',pid,task,ease:SC.sEase||null,trust:SC.sTrust||null,missing:$('fMissing').value.trim(),bug:$('fBug').value.trim(),tried:fs.map(f=>f.k)})});
+  rows.push({course:COURSE,exercise:EX,author:name,body:JSON.stringify({t:'overall',pid,task,ease:SC.sEase||null,trust:SC.sTrust||null,missing:$('fMissing').value.trim(),bug:$('fBug').value.trim(),use:$('fUse').value.trim(),useless:$('fUseless').value.trim(),voice:$('fVoice').value.trim(),tried:fs.map(f=>f.k)})});
   $('fMsg').textContent='Sending';
   try{ const r=await fetch(CFG.url+'/rest/v1/posts',{method:'POST',headers:{...H,Prefer:'return=minimal'},body:JSON.stringify(rows)});
-    if(r.ok){ $('fMsg').textContent='Thank you. Your feedback is in.'; document.querySelectorAll('#feats input').forEach(i=>i.checked=false); boxes(); ['fMissing','fBug'].forEach(i=>$(i).value=''); load(); }
+    if(r.ok){ $('fMsg').textContent='Thank you. Your feedback is in.'; document.querySelectorAll('#feats input').forEach(i=>i.checked=false); boxes(); ['fMissing','fBug','fUse','fUseless','fVoice'].forEach(i=>$(i).value=''); load(); }
     else $('fMsg').textContent='That did not send. Try again in a moment.'; }catch(_){ $('fMsg').textContent='That did not send. Try again in a moment.'; } };
 // results
 async function load(){ try{ const r=await fetch(CFG.url+'/rest/v1/posts?select=author,body,created_at&course=eq.'+COURSE+'&exercise=eq.'+EX+'&order=created_at.asc',{headers:H}); const raw=await r.json();
@@ -169,8 +170,10 @@ async function load(){ try{ const r=await fetch(CFG.url+'/rest/v1/posts?select=a
   $('rBars').innerHTML=FEATS.filter(f=>cnt[f[0]]).sort((a,b)=>cnt[b[0]]-cnt[a[0]]).map(f=>'<div class="barrow"><span>'+f[1]+'</span><div><div class="bar" style="width:'+(cnt[f[0]]/mx*100)+'%"></div></div><span>'+cnt[f[0]]+'</span></div>').join('')||'<p class="msg">No feedback yet.</p>';
   $('rFeat').innerHTML=FEATS.filter(f=>cnt[f[0]]).map(f=>{ const xs=ft.filter(x=>x.k===f[0]); const li=(arr,key)=>arr.filter(x=>x[key]).map(x=>'<li>'+esc(x[key])+(f[0]==='other'&&x.o?' <span class="who">('+esc(x.o)+')</span>':'')+' <span class="who">'+esc(x.author||'Anonymous')+', '+esc(x.task)+'</span></li>').join('');
     const L=li(xs,'l'), I=li(xs,'i'); return '<div class="fres"><h4 style="margin:0 0 6px">'+f[1]+' <span class="who">tried '+xs.length+' times</span></h4>'+(L?'<b>Liked</b><ul class="lk">'+L+'</ul>':'')+(I?'<b>Could improve</b><ul class="im">'+I+'</ul>':'')+'</div>'; }).join('');
+  const lst=(key,title)=>{ const it=ov.filter(x=>x[key]).map(x=>'<li>'+esc(x[key])+' <span class="who">'+esc(x.author||'Anonymous')+', '+esc(x.task)+'</span></li>').join(''); return it?'<div class="fres"><b>'+title+'</b><ul class="'+(key==='useless'?'im':'lk')+'">'+it+'</ul></div>':''; };
+  $('rInfo').innerHTML=(lst('use','Helpful information')+lst('useless','Information that was not useful')+lst('voice','Making the public voice heard'))||'<p class="msg">Nothing yet.</p>';
   const ms=ov.filter(x=>x.missing).map(x=>'<li>'+esc(x.missing)+' <span class="who">'+esc(x.author||'Anonymous')+'</span></li>').join(''), bg=ov.filter(x=>x.bug).map(x=>'<li>'+esc(x.bug)+' <span class="who">'+esc(x.author||'Anonymous')+'</span></li>').join('');
-  $('rOther').innerHTML='<div class="fres">'+(ms?'<b>Expected to find, and could not</b><ul class="im">'+ms+'</ul>':'')+(bg?'<b>Bugs and errors</b><ul class="im">'+bg+'</ul>':'')+(!ms&&!bg?'<p class="msg">Nothing yet.</p>':'')+'</div>';
+  $('rOther').innerHTML='<div class="fres">'+(ms?'<b>Wanted to know, and PLATO could not tell</b><ul class="im">'+ms+'</ul>':'')+(bg?'<b>Bugs and errors</b><ul class="im">'+bg+'</ul>':'')+(!ms&&!bg?'<p class="msg">Nothing yet.</p>':'')+'</div>';
  }catch(_){ $('rStats').innerHTML='<p class="msg">Feedback could not be loaded.</p>'; } }
 $('rGo').onclick=load; $('rTask').onchange=load; load(); setInterval(load,20000);
 // session clock (presenter device)
