@@ -3,65 +3,75 @@
 <title>PLATO Consortium</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
 <style>
-:root{--primary:#533afd;--deep:#4434d4;--soft:#665efd;--sub:#b9b9f9;--navy:#1c1e54;--ink:#0d253d;--ink2:#273951;--mute:#64748d;--canvas:#ffffff;--soft-bg:#f6f9fc;--cream:#f5e9d4;--hair:#e3e8ee;--hair-in:#a8c3de;--ruby:#ea2261}
-*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
-a{color:var(--primary)}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px}
-header.hero{background:var(--navy);color:#fff;padding:56px 0 44px}
-header.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sub)}
-header.hero h1{font-weight:300;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:.3em 0 .3em}
-header.hero p{color:#d8dcf5;max-width:640px}
-.pill{display:inline-block;background:var(--primary);color:#fff;border:0;border-radius:999px;padding:10px 20px;font:500 .95rem Inter,sans-serif;text-decoration:none;cursor:pointer}
-.pill.ghost{background:transparent;color:var(--primary);border:1px solid var(--primary)}
-header .pill.ghost{color:#fff;border-color:#fff}
-section{padding:40px 0;border-bottom:1px solid var(--hair)}
-section.soft{background:var(--soft-bg)}section.cream{background:var(--cream)}
-h2{font-weight:400;font-size:1.7rem;margin:0 0 .4em}h3{font-weight:500;margin:.2em 0 .4em}
-.lead{color:var(--ink2);max-width:700px}
-.agenda{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
-.phase{background:var(--canvas);border:1px solid var(--hair);border-radius:8px;padding:14px}
-.phase .t{font-size:.8rem;color:var(--mute)}.phase.now{border-color:var(--primary);box-shadow:0 0 0 2px var(--sub)}
-.clock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px}
-.clock .big{font:300 2.4rem Inter,sans-serif;color:var(--primary);min-width:4.5em}
-.tasks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-.task{background:var(--canvas);border:1px solid var(--hair);border-radius:8px;padding:20px}
-.task .tag{display:inline-block;background:var(--sub);color:var(--navy);border-radius:4px;font-size:.75rem;padding:2px 8px;letter-spacing:.06em;text-transform:uppercase}
-.task ol{padding-left:1.2em}.task li{margin:.4em 0}
-form .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:10px 0}
-label{font-weight:500}
-input[type=text],textarea,select{font:inherit;color:var(--ink);border:1px solid var(--hair-in);border-radius:6px;padding:8px 10px;background:#fff}
-textarea{width:100%;min-height:4.2em}
-.feats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin:8px 0 14px}
-.feat{border:1px solid var(--hair);border-radius:6px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;background:#fff;cursor:pointer}
-.feat input{margin-top:4px}.feat small{display:block;color:var(--mute);font-size:.8rem;line-height:1.35}
-.fbox{border-left:3px solid var(--primary);padding:6px 0 6px 14px;margin:14px 0}
-.fbox h4{margin:0 0 6px;font-weight:500}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.scale{display:flex;gap:6px}.scale button{border:1px solid var(--hair-in);background:#fff;border-radius:6px;width:2.4em;height:2.2em;cursor:pointer;font:inherit}
-.scale button[aria-pressed=true]{background:var(--primary);color:#fff;border-color:var(--primary)}
-.msg{color:var(--mute)}
-.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0}
-.stat{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:12px;text-align:center}.stat b{display:block;font:300 1.8rem Inter,sans-serif;color:var(--primary)}.stat small{color:var(--mute)}
-.barrow{display:grid;grid-template-columns:16em 1fr 2.5em;gap:10px;align-items:center;margin:4px 0;font-size:.92rem}
-.bar{height:14px;background:var(--soft);border-radius:3px}
-.fres{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:14px;margin:10px 0}
-.fres ul{margin:.3em 0 .6em;padding-left:1.2em}.fres .lk li::marker{content:"+  ";color:#2a8a5e}.fres .im li::marker{content:"→  ";color:var(--ruby)}
-.fres .who{color:var(--mute);font-size:.8rem}
-.contrib{margin-top:22px}.contrib .list{margin-top:12px}
-.citem{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:12px 14px;margin:8px 0}.citem p{margin:.2em 0}.citem .who{color:var(--mute);font-size:.8rem}
-footer{padding:28px 0;color:var(--mute);font-size:.85rem}
-@media(max-width:720px){.agenda,.tasks,.two{grid-template-columns:1fr}.barrow{grid-template-columns:9em 1fr 2em}}
+:root{--blue:#0066cc;--blue-f:#0071e3;--blue-d:#2997ff;--ink:#1d1d1f;--ink80:#333333;--ink48:#7a7a7a;--hair:#e0e0e0;--div:#f0f0f0;--canvas:#ffffff;--parch:#f5f5f7;--pearl:#fafafc;--tile1:#272729;--tile2:#2a2a2c;--chip:#d2d2d7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);font:17px/1.47 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:-0.374px;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+nav.g{background:#000;color:#fff;height:44px;font-size:12px;letter-spacing:-0.12px}nav.g .wrap{display:flex;align-items:center;justify-content:space-between;height:44px}
+nav.g b{font-weight:600;font-size:14px;letter-spacing:.02em}nav.g a{color:#d6d6d6;margin-left:22px}nav.g a:hover{color:#fff;text-decoration:none}
+nav.sub{position:sticky;top:0;z-index:10;background:rgba(245,245,247,.86);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--hair);height:52px}
+nav.sub .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}nav.sub .t{font:600 21px/1 -apple-system,"SF Pro Display",sans-serif;letter-spacing:.231px}
+nav.sub .links a{color:var(--ink80);font-size:12px;margin-right:18px}nav.sub .pill{padding:6px 14px;font-size:12px}
+header.hero{text-align:center;padding:72px 0 0;background:var(--canvas)}
+header.hero .eyebrow{font:600 21px/1.19 -apple-system,"SF Pro Display",sans-serif;color:var(--ink48);letter-spacing:.231px}
+header.hero h1{font:600 clamp(40px,7vw,56px)/1.07 -apple-system,"SF Pro Display",sans-serif;letter-spacing:-0.28px;margin:10px 0 14px}
+header.hero p.lead{font:300 21px/1.5 -apple-system,"SF Pro Text",sans-serif;color:var(--ink80);max-width:680px;margin:0 auto}
+.ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:26px 0 10px}
+.pill{display:inline-block;background:var(--blue);color:#fff;border:0;border-radius:9999px;padding:11px 22px;font:400 17px/1 -apple-system,sans-serif;cursor:pointer;letter-spacing:-0.374px}
+.pill:hover{background:var(--blue-f);text-decoration:none}
+.pill.ghost{background:transparent;color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}.pill.ghost:hover{background:rgba(0,102,204,.06)}
+.code{font-size:14px;color:var(--ink48);letter-spacing:-0.224px}.code b{color:var(--ink);font-weight:600}
+.shot{display:block;width:100%;max-width:980px;margin:44px auto 0;border-radius:18px 18px 0 0;box-shadow:rgba(0,0,0,.22) 3px 5px 30px}
+section{padding:80px 0;background:var(--canvas)}section.soft,section.cream{background:var(--parch)}
+section.dark{background:var(--tile1);color:#fff}section.dark .lead,section.dark .msg{color:#cccccc}section.dark a{color:var(--blue-d)}
+h2{font:600 40px/1.1 -apple-system,"SF Pro Display",sans-serif;letter-spacing:0;margin:0 0 12px;text-align:center}
+h3{font:600 21px/1.19 -apple-system,"SF Pro Display",sans-serif;letter-spacing:.231px;margin:34px 0 14px}
+.lead{font:300 21px/1.5 -apple-system,sans-serif;color:var(--ink80);max-width:700px;margin:0 auto 18px;text-align:center}
+.tasks{display:grid;gap:16px;margin-top:8px}
+.task{background:var(--canvas);border:1px solid var(--hair);border-radius:18px;padding:24px}
+section.soft .task,section.cream .task{border-color:transparent}
+section.dark .task{background:var(--tile2);border-color:transparent;color:#fff}
+.task h3{margin:10px 0 8px;font-size:19px}.task p{margin:.4em 0;font-size:15px;line-height:1.5;letter-spacing:-0.224px;color:inherit}
+.tag{display:inline-block;background:var(--parch);color:var(--ink80);border-radius:9999px;font-size:12px;padding:4px 12px;letter-spacing:-0.12px}
+section.soft .tag,section.cream .tag{background:var(--canvas)}section.dark .tag{background:#3a3a3c;color:#f5f5f7}
+form .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:12px 0}
+label{font-weight:600;font-size:14px;letter-spacing:-0.224px}
+input[type=text],textarea,select{font:inherit;font-size:17px;color:var(--ink);border:1px solid var(--chip);border-radius:11px;padding:10px 14px;background:#fff;outline:none}
+input[type=text]:focus,textarea:focus,select:focus{border-color:var(--blue-f);box-shadow:0 0 0 3px rgba(0,113,227,.2)}
+textarea{width:100%;min-height:4.6em}
+.feats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:10px 0 16px}
+.feat{border:1px solid var(--hair);border-radius:9999px;padding:10px 16px;display:flex;gap:10px;align-items:center;background:#fff;cursor:pointer;font-size:14px;letter-spacing:-0.224px}
+.feat small{display:none}.feat input{accent-color:var(--blue)}
+.fbox{background:#fff;border-radius:18px;padding:18px 20px;margin:14px 0}.fbox h4{margin:0 0 10px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.msg{color:var(--ink48);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:18px 0}
+.stat{background:#fff;border-radius:18px;padding:18px;text-align:center}.stat b{display:block;font:600 40px/1.1 -apple-system,"SF Pro Display",sans-serif;color:var(--ink)}.stat small{color:var(--ink48);font-size:12px}
+.barrow{display:grid;grid-template-columns:16em 1fr 2.5em;gap:10px;align-items:center;margin:6px 0;font-size:14px}
+.bar{height:8px;background:var(--blue);border-radius:9999px}
+.fres,.citem{background:#fff;border-radius:18px;padding:18px 20px;margin:10px 0}
+section:not(.soft):not(.cream):not(.dark) .fres,section:not(.soft):not(.cream):not(.dark) .citem{border:1px solid var(--hair)}
+section.dark .citem{background:var(--tile2)}
+.fres ul{margin:.3em 0 .6em;padding-left:1.2em}.fres .lk li::marker{content:"+  ";color:#2a8a5e}.fres .im li::marker{content:"→  ";color:var(--blue)}
+.who{color:var(--ink48);font-size:12px}
+.contrib{margin-top:26px}.citem p{margin:.2em 0}
+footer{background:var(--parch);color:var(--ink80);font-size:12px;letter-spacing:-0.12px;padding:40px 0;border-top:1px solid var(--hair)}
+@media(max-width:734px){.two{grid-template-columns:1fr}.barrow{grid-template-columns:9em 1fr 2em}nav.sub .links{display:none}h2{font-size:32px}section{padding:56px 0}nav.g a{margin-left:12px}}
 </style></head><body>
 
+<nav class="g"><div class="wrap"><b>PLATO</b><span><a href="https://platoplanning.org/" target="_blank" rel="noopener">Open PLATO</a><a href="https://liwan.work" target="_blank" rel="noopener">Urban Modelling Research Group</a></span></div></nav>
+<nav class="sub"><div class="wrap"><span class="t">Consortium</span><span class="links"><a href="#future">Future work</a><a href="#synergy">Research synergies</a><a href="#feedback">Feedback</a></span><a class="pill" href="#join">Join</a></div></nav>
 <header class="hero"><div class="wrap">
   <div class="eyebrow">PLATO consortium</div>
-  <h1>Build PLATO with us</h1>
-  <p>PLATO brings Greater Cambridge's evidence base, Local Plan and planning applications into one map and one assistant. After our first group session we are forming a consortium to keep building it. Tell us what PLATO should do next, where it connects to your research, and how you would like to take part.</p>
-  <p><a class="pill" href="#join">Join the project</a> &nbsp; <a class="pill ghost" href="#future">Suggest future work</a> &nbsp; <a class="pill ghost" href="#synergy">Research synergies</a> &nbsp; <a class="pill ghost" href="https://platoplanning.org/" target="_blank" rel="noopener">Open PLATO</a></p>
-  <p style="font-size:.95rem;color:#d8dcf5">Access code: <b style="color:#fff;letter-spacing:.04em">greatercam</b></p>
+  <h1>Build PLATO with us.</h1>
+  <p class="lead">One map and one assistant for Greater Cambridge's evidence base, Local Plan and planning applications. We are forming a consortium to keep building it.</p>
+  <div class="ctas"><a class="pill" href="#join">Join the project</a><a class="pill ghost" href="https://platoplanning.org/" target="_blank" rel="noopener">Open PLATO</a></div>
+  <p class="code">Access code <b>greatercam</b></p>
+  <img class="shot" src="plato_map.webp" alt="PLATO map view with infrastructure layers and planning applications in Cambridge">
 </div></header>
 
-<section id="future"><div class="wrap">
+<section class="soft" id="future"><div class="wrap">
   <h2>Future work</h2>
   <p class="lead">The next stage focuses on four areas. Add your own suggestions below; every suggestion is visible to the group.</p>
   <h3 style="margin-top:18px">1. The AI assistant</h3>
@@ -91,14 +101,14 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
   <div class="contrib" data-kind="future" data-f1="Your suggestion" data-f2="Why it matters, or who would use it"></div>
 </div></section>
 
-<section class="soft" id="synergy"><div class="wrap">
+<section class="dark" id="synergy"><div class="wrap">
   <h2>Research synergies</h2>
   <p class="lead">How PLATO connects with the Urban Modelling Research Group's four research focuses, and with projects in the group. Tell us about your own work below.</p>
   <div class="tasks" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
-    <div class="task"><span class="tag">Spatial planning</span><p>Site allocations, applications and growth areas next to transport and infrastructure layers, for work on how land and transport develop together.</p><p class="msg" style="font-size:.85rem">Related projects: greenbelt and congestion charge policy (Yibin Li); electric vehicles and public transport (Hao Zhang); transport resilience (Yu Han); transport behaviour (Yuxi Xiong).</p></div>
-    <div class="task"><span class="tag">Policy studies</span><p>Plan documents and applications with dates and stages, for studying how policies are written, applied and what they change.</p><p class="msg" style="font-size:.85rem">Related projects: built environment and subjective wellbeing (Jerry Chen); Singapore's ethnic integration policy (Shantong Wang).</p></div>
-    <div class="task"><span class="tag">Urban modelling</span><p>A shared evidence base and map for model inputs, and a public front end for showing model scenarios.</p><p class="msg" style="font-size:.85rem">Related projects: energy impacts of spatial planning in Greater Beijing (Qiancheng Wang); urban expansion from night-time light (Zengquan Li).</p></div>
-    <div class="task"><span class="tag">Digital cities</span><p>Language models over planning text and a 3D view of the city, as steps towards a planning digital twin.</p><p class="msg" style="font-size:.85rem">Related projects: planning strategies identified with NLP (Emily Tianyuan Wang); AI-based pedestrian navigation (Minje Choi); urban recreational space in the digital era (Enjia Zhang); net zero cities (Anna Rowell).</p></div>
+    <div class="task"><span class="tag">Spatial planning</span><p>Site allocations, applications and growth areas next to transport and infrastructure layers, for work on how land and transport develop together.</p><p class="msg" style="font-size:.85rem">Related projects: greenbelt and congestion charge policy; electric vehicles and public transport; transport resilience; transport behaviour.</p></div>
+    <div class="task"><span class="tag">Policy studies</span><p>Plan documents and applications with dates and stages, for studying how policies are written, applied and what they change.</p><p class="msg" style="font-size:.85rem">Related projects: built environment and subjective wellbeing; Singapore's ethnic integration policy.</p></div>
+    <div class="task"><span class="tag">Urban modelling</span><p>A shared evidence base and map for model inputs, and a public front end for showing model scenarios.</p><p class="msg" style="font-size:.85rem">Related projects: energy impacts of spatial planning in Greater Beijing; urban expansion from night-time light.</p></div>
+    <div class="task"><span class="tag">Digital cities</span><p>Language models over planning text and a 3D view of the city, as steps towards a planning digital twin.</p><p class="msg" style="font-size:.85rem">Related projects: planning strategies identified with NLP; AI-based pedestrian navigation; urban recreational space in the digital era; net zero cities.</p></div>
   </div>
   <div class="contrib" data-kind="synergy" data-f1="Your research, in a sentence or two" data-f2="How it could connect with PLATO, or what you could bring"></div>
 </div></section>
@@ -116,7 +126,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
   <h3 style="margin-top:22px">Who has joined</h3><div id="jList"></div>
 </div></section>
 
-<section class="cream" id="feedback"><div class="wrap">
+<section id="feedback"><div class="wrap">
   <h2>Feedback on PLATO</h2>
   <p class="lead">Tick the features you have tried, and for each say what you liked and what could improve. Your name is optional, and your feedback is visible to the group.</p>
   <form id="fb" onsubmit="return false">
