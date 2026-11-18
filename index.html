@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PLATO Beta Session</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
+<style>
+:root{--primary:#533afd;--deep:#4434d4;--soft:#665efd;--sub:#b9b9f9;--navy:#1c1e54;--ink:#0d253d;--ink2:#273951;--mute:#64748d;--canvas:#ffffff;--soft-bg:#f6f9fc;--cream:#f5e9d4;--hair:#e3e8ee;--hair-in:#a8c3de;--ruby:#ea2261}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+a{color:var(--primary)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header.hero{background:var(--navy);color:#fff;padding:56px 0 44px}
+header.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sub)}
+header.hero h1{font-weight:300;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:.3em 0 .3em}
+header.hero p{color:#d8dcf5;max-width:640px}
+.pill{display:inline-block;background:var(--primary);color:#fff;border:0;border-radius:999px;padding:10px 20px;font:500 .95rem Inter,sans-serif;text-decoration:none;cursor:pointer}
+.pill.ghost{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+header .pill.ghost{color:#fff;border-color:#fff}
+section{padding:40px 0;border-bottom:1px solid var(--hair)}
+section.soft{background:var(--soft-bg)}section.cream{background:var(--cream)}
+h2{font-weight:400;font-size:1.7rem;margin:0 0 .4em}h3{font-weight:500;margin:.2em 0 .4em}
+.lead{color:var(--ink2);max-width:700px}
+.agenda{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.phase{background:var(--canvas);border:1px solid var(--hair);border-radius:8px;padding:14px}
+.phase .t{font-size:.8rem;color:var(--mute)}.phase.now{border-color:var(--primary);box-shadow:0 0 0 2px var(--sub)}
+.clock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.clock .big{font:300 2.4rem Inter,sans-serif;color:var(--primary);min-width:4.5em}
+.tasks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.task{background:var(--canvas);border:1px solid var(--hair);border-radius:8px;padding:20px}
+.task .tag{display:inline-block;background:var(--sub);color:var(--navy);border-radius:4px;font-size:.75rem;padding:2px 8px;letter-spacing:.06em;text-transform:uppercase}
+.task ol{padding-left:1.2em}.task li{margin:.4em 0}
+form .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:10px 0}
+label{font-weight:500}
+input[type=text],textarea,select{font:inherit;color:var(--ink);border:1px solid var(--hair-in);border-radius:6px;padding:8px 10px;background:#fff}
+textarea{width:100%;min-height:4.2em}
+.feats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin:8px 0 14px}
+.feat{border:1px solid var(--hair);border-radius:6px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;background:#fff;cursor:pointer}
+.feat input{margin-top:4px}.feat small{display:block;color:var(--mute);font-size:.8rem;line-height:1.35}
+.fbox{border-left:3px solid var(--primary);padding:6px 0 6px 14px;margin:14px 0}
+.fbox h4{margin:0 0 6px;font-weight:500}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scale{display:flex;gap:6px}.scale button{border:1px solid var(--hair-in);background:#fff;border-radius:6px;width:2.4em;height:2.2em;cursor:pointer;font:inherit}
+.scale button[aria-pressed=true]{background:var(--primary);color:#fff;border-color:var(--primary)}
+.msg{color:var(--mute)}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0}
+.stat{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:12px;text-align:center}.stat b{display:block;font:300 1.8rem Inter,sans-serif;color:var(--primary)}.stat small{color:var(--mute)}
+.barrow{display:grid;grid-template-columns:16em 1fr 2.5em;gap:10px;align-items:center;margin:4px 0;font-size:.92rem}
+.bar{height:14px;background:var(--soft);border-radius:3px}
+.fres{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:14px;margin:10px 0}
+.fres ul{margin:.3em 0 .6em;padding-left:1.2em}.fres .lk li::marker{content:"+  ";color:#2a8a5e}.fres .im li::marker{content:"→  ";color:var(--ruby)}
+.fres .who{color:var(--mute);font-size:.8rem}
+footer{padding:28px 0;color:var(--mute);font-size:.85rem}
+@media(max-width:720px){.agenda,.tasks,.two{grid-template-columns:1fr}.barrow{grid-template-columns:9em 1fr 2em}}
+</style></head><body>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Research group beta session</div>
+  <h1>Test PLATO with us</h1>
+  <p>PLATO brings Greater Cambridge's evidence base, Local Plan and planning applications into one map and one assistant. You are its first testers. For the next hour, use it as a planner and as a local resident, then tell us what worked and what did not.</p>
+  <p><a class="pill" href="https://platoplanning.org/" target="_blank" rel="noopener">Open PLATO</a> &nbsp; <a class="pill ghost" href="#feedback">Give feedback</a></p>
+  <p style="font-size:.95rem;color:#d8dcf5">Access code: <b style="color:#fff;letter-spacing:.04em">greatercam</b>. Keep PLATO open in its own tab for the whole hour, including the discussion.</p>
+</div></header>
+
+<section class="soft"><div class="wrap">
+  <h2>The hour</h2>
+  <div class="agenda" id="agenda">
+    <div class="phase" data-p="0"><div class="t">0 to 15 min</div><h3>Introduction</h3><p>What PLATO is and what we want to learn from you.</p></div>
+    <div class="phase" data-p="1"><div class="t">15 to 30 min</div><h3>Task 1: planner</h3><p>Use PLATO as a planning officer would.</p></div>
+    <div class="phase" data-p="2"><div class="t">30 to 45 min</div><h3>Task 2: resident</h3><p>Use PLATO as someone who lives near a new development.</p></div>
+    <div class="phase" data-p="3"><div class="t">45 to 60 min</div><h3>Discussion</h3><p>We look at everyone's feedback together, with PLATO open to show what you mean.</p></div>
+  </div>
+  <div class="clock"><span class="big" id="clk">60:00</span><span id="clkLab" class="msg">Session not started</span>
+    <button class="pill ghost" id="clkGo">Start the hour</button><button class="pill ghost" id="clkSkip">Next phase</button><button class="pill ghost" id="clkReset">Reset</button></div>
+  <p class="msg" style="font-size:.85rem">The clock runs on this device only, for whoever is presenting.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>The two tasks</h2>
+  <p class="lead">Work on your own or in pairs. There are no right answers: we want to see where PLATO helps, where it gets in the way, and where you stop trusting it. Note the features you use as you go.</p>
+  <div class="tasks">
+    <div class="task"><span class="tag">Task 1 · 15 minutes</span><h3>You are a planner</h3>
+      <p>You are a planning officer in Greater Cambridge, preparing to advise on new housing in one of the growth areas.</p>
+      <ol><li>Choose <b>Planner</b> on the landing page.</li>
+        <li>Find the plan's housing need and how much has been delivered so far.</li>
+        <li>Pick one growth area. Check what schools, GPs, transport and other infrastructure are nearby, and which planning applications have been made there.</li>
+        <li>Ask the assistant a question you would need answered in an officer report. Follow its source: does the cited passage support the answer?</li>
+        <li>Note one thing you expected to find and could not.</li></ol></div>
+    <div class="task"><span class="tag">Task 2 · 15 minutes</span><h3>You are a local resident</h3>
+      <p>You live near a site where new homes are planned, and you have heard about it from a neighbour.</p>
+      <ol><li>Choose <b>Resident</b> on the landing page.</li>
+        <li>Find what is proposed near you: how many homes, where, and roughly when.</li>
+        <li>Find out whether there will be school places, a GP and transport for the new residents.</li>
+        <li>Ask a question in your own words, as a resident would, not a planner.</li>
+        <li>Decide whether you would trust the answer enough to repeat it at a residents' meeting, and why.</li></ol></div>
+  </div>
+</div></section>
+
+<section class="cream" id="feedback"><div class="wrap">
+  <h2>Your feedback</h2>
+  <p class="lead">Tick the features you tried, and say what you liked and what could improve for each. You can submit after each task or once at the end. Your name is optional; everyone in the session sees the feedback in the discussion.</p>
+  <form id="fb" onsubmit="return false">
+    <div class="row"><label for="fName">Name (optional)</label><input type="text" id="fName" maxlength="60"></div>
+    <div class="row"><label for="fTask">Which task</label><select id="fTask"><option value="Planner">Task 1: planner</option><option value="Resident">Task 2: resident</option><option value="Both">Both</option></select></div>
+    <label>Features you tried</label>
+    <div class="feats" id="feats"></div>
+    <div id="fboxes"></div>
+    <div class="two">
+      <div><label>How easy was PLATO to use?</label><div class="scale" id="sEase"></div><small class="msg">1 very hard, 5 very easy</small></div>
+      <div><label>How far would you trust its answers?</label><div class="scale" id="sTrust"></div><small class="msg">1 not at all, 5 completely</small></div>
+    </div>
+    <div class="row" style="display:block"><label for="fMissing">Anything you expected to find and could not?</label><textarea id="fMissing" maxlength="400"></textarea></div>
+    <div class="row" style="display:block"><label for="fBug">Bugs or errors (what you did, and what happened)</label><textarea id="fBug" maxlength="400"></textarea></div>
+    <div class="row"><button class="pill" id="fGo">Submit feedback</button><span class="msg" id="fMsg"></span></div>
+  </form>
+</div></section>
+
+<section class="soft" id="results"><div class="wrap">
+  <h2>What the group thinks</h2>
+  <p class="lead">Updates every 20 seconds. This is what we discuss in the last 15 minutes.</p>
+  <div class="row"><button class="pill ghost" id="rGo">Refresh now</button> <label for="rTask" style="margin-left:12px">Show</label> <select id="rTask"><option value="">All tasks</option><option value="Planner">Planner</option><option value="Resident">Resident</option><option value="Both">Both</option></select></div>
+  <div class="stats" id="rStats"></div>
+  <h3>Features tried</h3><div id="rBars"></div>
+  <h3 style="margin-top:20px">By feature</h3><div id="rFeat"></div>
+  <h3 style="margin-top:20px">Missing, and bugs</h3><div id="rOther"></div>
+</div></section>
+
+<footer><div class="wrap">PLATO: Platform for Land-use Analysis and Transparent Outcomes. Department of Land Economy, University of Cambridge. Feedback is stored for this session only and used to improve the platform.</div></footer>
+
+<script>
+const CFG={"url": "https://yqehjgdzlaydvzmwnvgs.supabase.co", "key": "sb_publishable_zsWof5jxkwKpfvs58HhUJg_o8LbZFNz"}, EX='plato-beta-1', COURSE='p11';
+const FEATS=[
+ ['role','Role choice','Planner, Resident or Developer on the landing page'],
+ ['dash','Overview dashboard','Plan need, delivery so far, applications'],
+ ['layers','Map layers','Schools, GPs, transport, environment and others'],
+ ['apps','Planning applications','Applications on the map, with filters and details'],
+ ['sites','Site allocations','Local Plan sites and growth areas'],
+ ['view3d','3D planning view','Buildings, heights and growth areas in 3D'],
+ ['insights','Analysis and insights','Local Plan documents and their contents'],
+ ['ai','AI assistant','Asking a question in your own words'],
+ ['sources','Evidence and sources','Source passages behind an answer'],
+ ['other','Something else','Describe it below']];
+const $=id=>document.getElementById(id), esc=t=>String(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const H={apikey:CFG.key,Authorization:'Bearer '+CFG.key,'Content-Type':'application/json'};
+// features
+$('feats').innerHTML=FEATS.map(([k,n,d])=>'<label class="feat"><input type="checkbox" value="'+k+'"><span>'+n+'<small>'+d+'</small></span></label>').join('');
+function boxes(){ const on=[...document.querySelectorAll('#feats input:checked')].map(i=>i.value);
+  const keep={}; document.querySelectorAll('.fbox').forEach(b=>keep[b.dataset.k]={l:b.querySelector('.l').value,i:b.querySelector('.i').value,o:(b.querySelector('.o')||{}).value});
+  $('fboxes').innerHTML=on.map(k=>{ const f=FEATS.find(x=>x[0]===k); return '<div class="fbox" data-k="'+k+'"><h4>'+f[1]+'</h4>'+(k==='other'?'<input type="text" class="o" maxlength="80" placeholder="Which feature?" style="width:100%;margin-bottom:6px">':'')+'<div class="two"><textarea class="l" maxlength="400" placeholder="What did you like?"></textarea><textarea class="i" maxlength="400" placeholder="What could improve?"></textarea></div></div>'; }).join('');
+  document.querySelectorAll('.fbox').forEach(b=>{ const v=keep[b.dataset.k]; if(v){ b.querySelector('.l').value=v.l; b.querySelector('.i').value=v.i; if(b.querySelector('.o')) b.querySelector('.o').value=v.o||''; } }); }
+document.querySelectorAll('#feats input').forEach(i=>i.onchange=boxes);
+// scales
+const SC={};
+['sEase','sTrust'].forEach(id=>{ $(id).innerHTML=[1,2,3,4,5].map(n=>'<button type="button" data-v="'+n+'" aria-pressed="false">'+n+'</button>').join('');
+  $(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{ $(id).querySelectorAll('button').forEach(z=>z.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); SC[id]=+b.dataset.v; }); });
+// submit: one row per feature plus one overall row
+$('fGo').onclick=async()=>{ const name=$('fName').value.trim()||null, task=$('fTask').value, pid=Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  const fs=[...document.querySelectorAll('.fbox')].map(b=>({k:b.dataset.k,o:(b.querySelector('.o')||{}).value||'',l:b.querySelector('.l').value.trim(),i:b.querySelector('.i').value.trim()}));
+  if(!fs.length){ $('fMsg').textContent='Tick at least one feature you tried.'; return; }
+  const rows=fs.map(f=>({course:COURSE,exercise:EX,author:name,body:JSON.stringify({t:'feature',pid,task,...f})}));
+  rows.push({course:COURSE,exercise:EX,author:name,body:JSON.stringify({t:'overall',pid,task,ease:SC.sEase||null,trust:SC.sTrust||null,missing:$('fMissing').value.trim(),bug:$('fBug').value.trim(),tried:fs.map(f=>f.k)})});
+  $('fMsg').textContent='Sending';
+  try{ const r=await fetch(CFG.url+'/rest/v1/posts',{method:'POST',headers:{...H,Prefer:'return=minimal'},body:JSON.stringify(rows)});
+    if(r.ok){ $('fMsg').textContent='Thank you. Your feedback is in.'; document.querySelectorAll('#feats input').forEach(i=>i.checked=false); boxes(); ['fMissing','fBug'].forEach(i=>$(i).value=''); load(); }
+    else $('fMsg').textContent='That did not send. Try again in a moment.'; }catch(_){ $('fMsg').textContent='That did not send. Try again in a moment.'; } };
+// results
+async function load(){ try{ const r=await fetch(CFG.url+'/rest/v1/posts?select=author,body,created_at&course=eq.'+COURSE+'&exercise=eq.'+EX+'&order=created_at.asc',{headers:H}); const raw=await r.json();
+  const rows=raw.map(p=>{ try{ return {...JSON.parse(p.body),author:p.author}; }catch(_){ return null; } }).filter(Boolean); const tf=$('rTask').value; const R=rows.filter(x=>!tf||x.task===tf);
+  const ov=R.filter(x=>x.t==='overall'), ft=R.filter(x=>x.t==='feature'); const avg=a=>a.length?(a.reduce((s,v)=>s+v,0)/a.length).toFixed(1):'–';
+  $('rStats').innerHTML=[['Responses',ov.length],['People',new Set(ov.map(x=>x.author||x.pid)).size],['Ease, out of 5',avg(ov.map(x=>x.ease).filter(Boolean))],['Trust, out of 5',avg(ov.map(x=>x.trust).filter(Boolean))]].map(([l,v])=>'<div class="stat"><b>'+v+'</b><small>'+l+'</small></div>').join('');
+  const cnt={}; ft.forEach(f=>cnt[f.k]=(cnt[f.k]||0)+1); const mx=Math.max(1,...Object.values(cnt));
+  $('rBars').innerHTML=FEATS.filter(f=>cnt[f[0]]).sort((a,b)=>cnt[b[0]]-cnt[a[0]]).map(f=>'<div class="barrow"><span>'+f[1]+'</span><div><div class="bar" style="width:'+(cnt[f[0]]/mx*100)+'%"></div></div><span>'+cnt[f[0]]+'</span></div>').join('')||'<p class="msg">No feedback yet.</p>';
+  $('rFeat').innerHTML=FEATS.filter(f=>cnt[f[0]]).map(f=>{ const xs=ft.filter(x=>x.k===f[0]); const li=(arr,key)=>arr.filter(x=>x[key]).map(x=>'<li>'+esc(x[key])+(f[0]==='other'&&x.o?' <span class="who">('+esc(x.o)+')</span>':'')+' <span class="who">'+esc(x.author||'Anonymous')+', '+esc(x.task)+'</span></li>').join('');
+    const L=li(xs,'l'), I=li(xs,'i'); return '<div class="fres"><h4 style="margin:0 0 6px">'+f[1]+' <span class="who">tried '+xs.length+' times</span></h4>'+(L?'<b>Liked</b><ul class="lk">'+L+'</ul>':'')+(I?'<b>Could improve</b><ul class="im">'+I+'</ul>':'')+'</div>'; }).join('');
+  const ms=ov.filter(x=>x.missing).map(x=>'<li>'+esc(x.missing)+' <span class="who">'+esc(x.author||'Anonymous')+'</span></li>').join(''), bg=ov.filter(x=>x.bug).map(x=>'<li>'+esc(x.bug)+' <span class="who">'+esc(x.author||'Anonymous')+'</span></li>').join('');
+  $('rOther').innerHTML='<div class="fres">'+(ms?'<b>Expected to find, and could not</b><ul class="im">'+ms+'</ul>':'')+(bg?'<b>Bugs and errors</b><ul class="im">'+bg+'</ul>':'')+(!ms&&!bg?'<p class="msg">Nothing yet.</p>':'')+'</div>';
+ }catch(_){ $('rStats').innerHTML='<p class="msg">Feedback could not be loaded.</p>'; } }
+$('rGo').onclick=load; $('rTask').onchange=load; load(); setInterval(load,20000);
+// session clock (presenter device)
+const PH=[[0,'Introduction'],[15,'Task 1: planner'],[30,'Task 2: resident'],[45,'Discussion'],[60,'Finished']];
+let t0=null, off=0; try{ t0=+localStorage.getItem('plato_t0')||null; off=+localStorage.getItem('plato_off')||0; }catch(_){}
+function tick(){ const now=Date.now(); if(!t0){ $('clk').textContent='60:00'; return; } const m=(now-t0)/60000+off; const p=PH.findIndex((x,i)=>m<(PH[i+1]?PH[i+1][0]:999))||0;
+  const idx=Math.min(p,4); const end=idx<4?PH[idx+1][0]:60; const rem=Math.max(0,(end-m)*60); $('clk').textContent=String(Math.floor(rem/60)).padStart(2,'0')+':'+String(Math.floor(rem%60)).padStart(2,'0');
+  $('clkLab').textContent=idx<4?PH[idx][1]+', time left in this part':'Session finished';
+  document.querySelectorAll('.phase').forEach(e=>e.classList.toggle('now',+e.dataset.p===idx)); }
+$('clkGo').onclick=()=>{ t0=Date.now(); off=0; try{ localStorage.setItem('plato_t0',t0); localStorage.setItem('plato_off',0); }catch(_){} tick(); };
+$('clkSkip').onclick=()=>{ if(!t0) return; const m=(Date.now()-t0)/60000+off; const nx=PH.find(x=>x[0]>m); if(nx){ off+=nx[0]-m; try{ localStorage.setItem('plato_off',off); }catch(_){} tick(); } };
+$('clkReset').onclick=()=>{ t0=null; off=0; try{ localStorage.removeItem('plato_t0'); localStorage.removeItem('plato_off'); }catch(_){} document.querySelectorAll('.phase').forEach(e=>e.classList.remove('now')); $('clkLab').textContent='Session not started'; tick(); };
+setInterval(tick,1000); tick();
+</script></body></html>
