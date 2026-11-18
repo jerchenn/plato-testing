@@ -63,7 +63,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 
 <section id="future"><div class="wrap">
   <h2>Future work</h2>
-  <p class="lead">The next stage focuses on three areas. Add your own suggestions below; every suggestion is visible to the group.</p>
+  <p class="lead">The next stage focuses on four areas. Add your own suggestions below; every suggestion is visible to the group.</p>
   <h3 style="margin-top:18px">1. The AI assistant</h3>
   <div class="tasks" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
     <div class="task"><span class="tag">Reliability</span><h3>Answers you can check</h3><p>Benchmark the assistant's answers against planners' own answers, and make sure every cited passage supports what the answer says.</p></div>
@@ -81,6 +81,12 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
     <div class="task"><span class="tag">Discussion</span><h3>A place to comment</h3><p>Let residents comment on a proposal next to the evidence about it, with moderation so the forum stays useful.</p></div>
     <div class="task"><span class="tag">Evidence</span><h3>From comments to evidence</h3><p>Summarise what residents raise, by topic and by place, so planners receive the comments as structured evidence.</p></div>
     <div class="task"><span class="tag">Accountability</span><h3>Closing the loop</h3><p>Show residents how the points they raised were considered in the decision.</p></div>
+  </div>
+  <h3 style="margin-top:22px">4. Lower barriers to consultation</h3>
+  <div class="tasks" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
+    <div class="task"><span class="tag">Notice</span><h3>Know when to have a say</h3><p>Tell residents which consultations and applications affect where they live, and when each one closes.</p></div>
+    <div class="task"><span class="tag">Responding</span><h3>Help to respond</h3><p>Help residents see which planning matters a comment can address and which policies apply, while the response stays in their own words.</p></div>
+    <div class="task"><span class="tag">Access</span><h3>Open to everyone</h3><p>Make consultation material readable on a phone, in plain language and in other languages, so taking part does not depend on time or expertise.</p></div>
   </div>
   <div class="contrib" data-kind="future" data-f1="Your suggestion" data-f2="Why it matters, or who would use it"></div>
 </div></section>
@@ -240,7 +246,7 @@ const EXC='plato-consortium';
 async function cRows(){ const r=await fetch(CFG.url+'/rest/v1/posts?select=author,body,created_at&course=eq.'+COURSE+'&exercise=eq.'+EXC+'&order=created_at.desc',{headers:H}); return (await r.json()).map(p=>{ try{ return {...JSON.parse(p.body),author:p.author,at:p.created_at}; }catch(_){ return null; } }).filter(Boolean); }
 async function cPost(obj,author){ const r=await fetch(CFG.url+'/rest/v1/posts',{method:'POST',headers:{...H,Prefer:'return=minimal'},body:JSON.stringify({course:COURSE,exercise:EXC,author:author||null,body:JSON.stringify(obj)})}); return r.ok; }
 document.querySelectorAll('.contrib').forEach(box=>{ const k=box.dataset.kind;
-  box.innerHTML='<form onsubmit="return false"><div class="row"><label>Name (optional)</label><input type="text" class="cn" maxlength="60">'+(k==='future'?' <label>For</label><select class="cgp"><option value="ai">The AI assistant</option><option value="public">Public understanding of planning</option><option value="forum">A resident forum</option><option value="other">Something else</option></select>':'')+'</div><div class="two"><textarea class="c1" maxlength="600" placeholder="'+box.dataset.f1+'"></textarea><textarea class="c2" maxlength="600" placeholder="'+box.dataset.f2+'"></textarea></div><div class="row"><button class="pill cg">Add</button><span class="msg cm"></span></div></form><div class="list"></div>';
+  box.innerHTML='<form onsubmit="return false"><div class="row"><label>Name (optional)</label><input type="text" class="cn" maxlength="60">'+(k==='future'?' <label>For</label><select class="cgp"><option value="ai">The AI assistant</option><option value="public">Public understanding of planning</option><option value="forum">A resident forum</option><option value="consult">Lower barriers to consultation</option><option value="other">Something else</option></select>':'')+'</div><div class="two"><textarea class="c1" maxlength="600" placeholder="'+box.dataset.f1+'"></textarea><textarea class="c2" maxlength="600" placeholder="'+box.dataset.f2+'"></textarea></div><div class="row"><button class="pill cg">Add</button><span class="msg cm"></span></div></form><div class="list"></div>';
   box.querySelector('.cg').onclick=async()=>{ const a=box.querySelector('.c1').value.trim(), b=box.querySelector('.c2').value.trim(), n=box.querySelector('.cn').value.trim();
     if(a.length<5){ box.querySelector('.cm').textContent='Write a few words first.'; return; } box.querySelector('.cm').textContent='Sending';
     const g=box.querySelector('.cgp')?box.querySelector('.cgp').value:null; const ok=await cPost({t:k,a,b,g},n).catch(()=>false); box.querySelector('.cm').textContent=ok?'Added. Thank you.':'That did not send. Try again in a moment.'; if(ok){ box.querySelector('.c1').value=''; box.querySelector('.c2').value=''; cLoad(); } }; });
@@ -255,7 +261,7 @@ async function cLoad(){ try{ const R=await cRows();
   document.querySelectorAll('.contrib').forEach(box=>{ const xs=R.filter(x=>x.t===box.dataset.kind);
     const item=x=>'<div class="citem"><p>'+esc(x.a)+'</p>'+(x.b?'<p>'+esc(x.b)+'</p>':'')+'<span class="who">'+esc(x.author||'Anonymous')+'</span></div>';
     if(box.dataset.kind==='future'){ const grp=(g,t)=>{ const ys=xs.filter(x=>(x.g||'other')===g); return ys.length?'<h4 style="margin:14px 0 4px;font-weight:500">'+t+'</h4>'+ys.map(item).join(''):''; };
-      box.querySelector('.list').innerHTML=(grp('ai','Suggestions: the AI assistant')+grp('public','Suggestions: public understanding of planning')+grp('forum','Suggestions: a resident forum')+grp('other','Suggestions: something else')+grp('planning','Earlier suggestions: planning-facing')+grp('resident','Earlier suggestions: resident-facing'))||'<p class="msg">Nothing added yet.</p>'; }
+      box.querySelector('.list').innerHTML=(grp('ai','Suggestions: the AI assistant')+grp('public','Suggestions: public understanding of planning')+grp('forum','Suggestions: a resident forum')+grp('consult','Suggestions: lower barriers to consultation')+grp('other','Suggestions: something else')+grp('planning','Earlier suggestions: planning-facing')+grp('resident','Earlier suggestions: resident-facing'))||'<p class="msg">Nothing added yet.</p>'; }
     else box.querySelector('.list').innerHTML=xs.map(item).join('')||'<p class="msg">Nothing added yet.</p>'; });
   const js=R.filter(x=>x.t==='join');
   $('jList').innerHTML=js.map(x=>'<div class="citem"><p><b>'+esc(x.author)+'</b>'+(x.aff?', '+esc(x.aff):'')+'</p>'+(x.bring&&x.bring.length?'<p class="who">Brings: '+x.bring.map(esc).join(', ')+'</p>':'')+(x.note?'<p>'+esc(x.note)+'</p>':'')+'</div>').join('')||'<p class="msg">No one yet. Be the first.</p>';
