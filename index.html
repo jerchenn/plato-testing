@@ -116,7 +116,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 <section class="soft" id="results"><div class="wrap">
   <h2>What the group thinks</h2>
   <p class="lead">Updates every 20 seconds. This is what we discuss in the last 15 minutes.</p>
-  <div class="row"><button class="pill ghost" id="rGo">Refresh now</button> <label for="rTask" style="margin-left:12px">Show</label> <select id="rTask"><option value="">All tasks</option><option value="Research">Your research</option><option value="Resident">Resident</option><option value="Both">Both</option></select></div>
+  <div class="row"><button class="pill ghost" id="rGo">Refresh now</button> <button class="pill ghost" id="rCsv">Download all responses (CSV)</button> <label for="rTask" style="margin-left:12px">Show</label> <select id="rTask"><option value="">All tasks</option><option value="Research">Your research</option><option value="Resident">Resident</option><option value="Both">Both</option></select></div>
   <div class="stats" id="rStats"></div>
   <h3>Features tried</h3><div id="rBars"></div>
   <h3 style="margin-top:20px">By feature</h3><div id="rFeat"></div>
@@ -188,4 +188,13 @@ $('clkGo').onclick=()=>{ t0=Date.now(); off=0; try{ localStorage.setItem('plato_
 $('clkSkip').onclick=()=>{ if(!t0) return; const m=(Date.now()-t0)/60000+off; const nx=PH.find(x=>x[0]>m); if(nx){ off+=nx[0]-m; try{ localStorage.setItem('plato_off',off); }catch(_){} tick(); } };
 $('clkReset').onclick=()=>{ t0=null; off=0; try{ localStorage.removeItem('plato_t0'); localStorage.removeItem('plato_off'); }catch(_){} document.querySelectorAll('.phase').forEach(e=>e.classList.remove('now')); $('clkLab').textContent='Session not started'; tick(); };
 setInterval(tick,1000); tick();
+
+// download every response as CSV, one row per feature comment or overall response
+$('rCsv').onclick=async()=>{ try{ const r=await fetch(CFG.url+'/rest/v1/posts?select=author,body,created_at&course=eq.'+COURSE+'&exercise=eq.'+EX+'&order=created_at.asc',{headers:H}); const raw=await r.json();
+  const cols=['submitted_at','name','response_id','task','row_type','feature','other_feature','liked','could_improve','ease_1to5','trust_1to5','helpful_info','not_useful_info','research_link','public_voice','could_not_find','bugs'];
+  const FN=Object.fromEntries(FEATS.map(f=>[f[0],f[1]]));
+  const out=[cols.join(',')]; raw.forEach(p=>{ let b; try{ b=JSON.parse(p.body); }catch(_){ return; }
+    const v=[p.created_at,p.author||'',b.pid||'',b.task||'',b.t||'',b.t==='feature'?(FN[b.k]||b.k):'',b.o||'',b.l||'',b.i||'',b.ease??'',b.trust??'',b.use||'',b.useless||'',b.res||'',b.voice||'',b.missing||'',b.bug||''];
+    out.push(v.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')); });
+  const blob=new Blob(['\ufeff'+out.join('\n')],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='plato_beta_feedback.csv'; a.click(); }catch(_){ alert('The responses could not be downloaded.'); } };
 </script></body></html>
