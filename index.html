@@ -93,14 +93,12 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 
 <section class="soft" id="synergy"><div class="wrap">
   <h2>Research synergies</h2>
-  <p class="lead">Where PLATO's data and tools meet the group's research. Tell us about your own work and how the two could connect.</p>
-  <div class="tasks" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
-    <div class="task"><span class="tag">Housing and land</span><p>Housing need, site allocations and applications in one place, for work on supply, affordability and land values.</p></div>
-    <div class="task"><span class="tag">Transport and land use</span><p>Growth areas next to transport and infrastructure layers, for modelling how new development and access change together.</p></div>
-    <div class="task"><span class="tag">Environment and climate</span><p>Green space, water and climate constraints alongside proposed growth, for work on exposure and adaptation.</p></div>
-    <div class="task"><span class="tag">Wellbeing and services</span><p>Schools, GPs and amenities near new homes, for work on how places shape everyday life.</p></div>
-    <div class="task"><span class="tag">Evaluating infrastructure</span><p>Dated applications and plan stages, for before-and-after designs on what new development and infrastructure change.</p></div>
-    <div class="task"><span class="tag">Language models and text</span><p>A large, structured corpus of planning documents, for research on retrieval, classification and the reliability of AI answers.</p></div>
+  <p class="lead">How PLATO connects with the Urban Modelling Research Group's four research focuses, and with projects in the group. Tell us about your own work below.</p>
+  <div class="tasks" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+    <div class="task"><span class="tag">Spatial planning</span><p>Site allocations, applications and growth areas next to transport and infrastructure layers, for work on how land and transport develop together.</p><p class="msg" style="font-size:.85rem">Related projects: greenbelt and congestion charge policy (Yibin Li); electric vehicles and public transport (Hao Zhang); transport resilience (Yu Han); transport behaviour (Yuxi Xiong).</p></div>
+    <div class="task"><span class="tag">Policy studies</span><p>Plan documents and applications with dates and stages, for studying how policies are written, applied and what they change.</p><p class="msg" style="font-size:.85rem">Related projects: built environment and subjective wellbeing (Jerry Chen); Singapore's ethnic integration policy (Shantong Wang).</p></div>
+    <div class="task"><span class="tag">Urban modelling</span><p>A shared evidence base and map for model inputs, and a public front end for showing model scenarios.</p><p class="msg" style="font-size:.85rem">Related projects: energy impacts of spatial planning in Greater Beijing (Qiancheng Wang); urban expansion from night-time light (Zengquan Li).</p></div>
+    <div class="task"><span class="tag">Digital cities</span><p>Language models over planning text and a 3D view of the city, as steps towards a planning digital twin.</p><p class="msg" style="font-size:.85rem">Related projects: planning strategies identified with NLP (Emily Tianyuan Wang); AI-based pedestrian navigation (Minje Choi); urban recreational space in the digital era (Enjia Zhang); net zero cities (Anna Rowell).</p></div>
   </div>
   <div class="contrib" data-kind="synergy" data-f1="Your research, in a sentence or two" data-f2="How it could connect with PLATO, or what you could bring"></div>
 </div></section>
@@ -118,41 +116,9 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
   <h3 style="margin-top:22px">Who has joined</h3><div id="jList"></div>
 </div></section>
 
-<section class="soft"><div class="wrap">
-  <h2>Testing session: the hour</h2>
-  <div class="agenda" id="agenda">
-    <div class="phase" data-p="0"><div class="t">0 to 15 min</div><h3>Introduction</h3><p>AI in planning, how PLATO works, and what we want to learn from you.</p></div>
-    <div class="phase" data-p="1"><div class="t">15 to 30 min</div><h3>Task 1: your research</h3><p>Ten minutes connecting PLATO to your own research, then five minutes of feedback.</p></div>
-    <div class="phase" data-p="2"><div class="t">30 to 45 min</div><h3>Task 2: resident</h3><p>Ten minutes on PLATO as a local resident, then five minutes of feedback.</p></div>
-    <div class="phase" data-p="3"><div class="t">45 to 60 min</div><h3>Discussion</h3><p>We look at everyone's feedback together, with PLATO open to show what you mean.</p></div>
-  </div>
-  <div class="clock"><span class="big" id="clk">60:00</span><span id="clkLab" class="msg">Session not started</span>
-    <button class="pill ghost" id="clkGo">Start the hour</button><button class="pill ghost" id="clkSkip">Next phase</button><button class="pill ghost" id="clkReset">Reset</button></div>
-  <p class="msg" style="font-size:.85rem">The clock runs on this device only, for whoever is presenting.</p>
-</div></section>
-
-<section><div class="wrap">
-  <h2>The two tasks</h2>
-  <p class="lead">Each task has ten minutes on PLATO and five minutes to note your feedback. This is not homework: say out loud whatever you think as you go. Work on your own or in pairs.</p>
-  <div class="tasks">
-    <div class="task"><span class="tag">Task 1 · 10 minutes</span><h3>Connect PLATO to your own research</h3>
-      <p><b>What on the platform relates to your research?</b> Which information is helpful for it, which is not, and what would you need that is missing?</p>
-      <details><summary>If you want a starting point</summary><ol><li>Pick the part of PLATO closest to your topic: housing, transport, environment, infrastructure, health, or the planning documents themselves.</li>
-        <li>Find one piece of evidence you could use in your own work, and check where it comes from.</li>
-        <li>Ask the assistant a question from your research, and follow its source: would you cite it?</li>
-        <li>Think about what you would need to do next: download the data, combine it with your own, or compare it over time.</li></ol></details></div>
-    <div class="task"><span class="tag">Task 2 · 10 minutes</span><h3>Imagine you are a local resident in Cambridge</h3>
-      <p><b>What do you want to know?</b> From the platform, which information is helpful, and which is not? And how could PLATO help make the public's voice heard?</p>
-      <details><summary>If you want a starting point</summary><ol><li>Choose <b>Resident</b> on the landing page.</li>
-        <li>Find what is proposed near where you live: how many homes, where and roughly when.</li>
-        <li>Check whether there will be school places, a GP and transport for new residents.</li>
-        <li>Ask a question in your own words, and decide whether you would repeat the answer at a residents' meeting.</li></ol></details></div>
-  </div>
-</div></section>
-
 <section class="cream" id="feedback"><div class="wrap">
-  <h2>Your feedback</h2>
-  <p class="lead">Tick the features you tried, and for each say what you liked and what could improve. Submit after each task or once at the end. Your name is optional; everyone in the session sees the feedback in the discussion.</p>
+  <h2>Feedback on PLATO</h2>
+  <p class="lead">Tick the features you have tried, and for each say what you liked and what could improve. Your name is optional, and your feedback is visible to the group.</p>
   <form id="fb" onsubmit="return false">
     <div class="row"><label for="fName">Name (optional)</label><input type="text" id="fName" maxlength="60"></div>
     <label>Features you tried</label>
@@ -165,7 +131,7 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 
 <section class="soft" id="results"><div class="wrap">
   <h2>What the group thinks</h2>
-  <p class="lead">Updates every 20 seconds. This is what we discuss in the last 15 minutes.</p>
+  <p class="lead">Updates every 20 seconds.</p>
   <div class="row"><button class="pill ghost" id="rGo">Refresh now</button> <button class="pill ghost" id="rCsv">Download all responses (CSV)</button></div>
   <div class="stats" id="rStats"></div>
   <h3>Features tried</h3><div id="rBars"></div>
@@ -220,17 +186,7 @@ async function load(){ try{ const r=await fetch(CFG.url+'/rest/v1/posts?select=a
   $('rOther').innerHTML='<div class="fres">'+(ot?'<ul class="im">'+ot+'</ul>':'<p class="msg">Nothing yet.</p>')+'</div>';
  }catch(_){ $('rStats').innerHTML='<p class="msg">Feedback could not be loaded.</p>'; } }
 $('rGo').onclick=load; load(); setInterval(load,20000);
-// session clock (presenter device)
-const PH=[[0,'Introduction'],[15,'Task 1: your research'],[30,'Task 2: resident'],[45,'Discussion'],[60,'Finished']];
-let t0=null, off=0; try{ t0=+localStorage.getItem('plato_t0')||null; off=+localStorage.getItem('plato_off')||0; }catch(_){}
-function tick(){ const now=Date.now(); if(!t0){ $('clk').textContent='60:00'; return; } const m=(now-t0)/60000+off; const p=PH.findIndex((x,i)=>m<(PH[i+1]?PH[i+1][0]:999))||0;
-  const idx=Math.min(p,4); const end=idx<4?PH[idx+1][0]:60; const rem=Math.max(0,(end-m)*60); $('clk').textContent=String(Math.floor(rem/60)).padStart(2,'0')+':'+String(Math.floor(rem%60)).padStart(2,'0');
-  $('clkLab').textContent=idx<4?PH[idx][1]+', time left in this part':'Session finished';
-  document.querySelectorAll('.phase').forEach(e=>e.classList.toggle('now',+e.dataset.p===idx)); }
-$('clkGo').onclick=()=>{ t0=Date.now(); off=0; try{ localStorage.setItem('plato_t0',t0); localStorage.setItem('plato_off',0); }catch(_){} tick(); };
-$('clkSkip').onclick=()=>{ if(!t0) return; const m=(Date.now()-t0)/60000+off; const nx=PH.find(x=>x[0]>m); if(nx){ off+=nx[0]-m; try{ localStorage.setItem('plato_off',off); }catch(_){} tick(); } };
-$('clkReset').onclick=()=>{ t0=null; off=0; try{ localStorage.removeItem('plato_t0'); localStorage.removeItem('plato_off'); }catch(_){} document.querySelectorAll('.phase').forEach(e=>e.classList.remove('now')); $('clkLab').textContent='Session not started'; tick(); };
-setInterval(tick,1000); tick();
+
 
 // download every response as CSV, one row per feature comment or overall response
 $('rCsv').onclick=async()=>{ try{ const r=await fetch(CFG.url+'/rest/v1/posts?select=author,body,created_at&course=eq.'+COURSE+'&exercise=eq.'+EX+'&order=created_at.asc',{headers:H}); const raw=await r.json();
