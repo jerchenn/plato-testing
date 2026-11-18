@@ -118,7 +118,7 @@ footer{background:var(--parch);color:var(--ink80);font-size:12px;letter-spacing:
   <p class="lead">The consortium needs data, domain expertise, methods, software, test sites and funding ideas. Say what you would like to contribute; your entry is visible to the group. To follow up privately, email Jerry.</p>
   <form onsubmit="return false" id="jForm">
     <div class="row"><label for="jName">Name</label><input type="text" id="jName" maxlength="60"> <label for="jAff">Affiliation</label><input type="text" id="jAff" maxlength="80"></div>
-    <label>What you could bring</label>
+    <label>Where you could contribute</label>
     <div class="feats" id="jChips"></div>
     <div class="row" style="display:block"><label for="jNote">How you would like to take part</label><textarea id="jNote" maxlength="600"></textarea></div>
     <div class="row"><button class="pill" id="jGo">Add me to the consortium</button> <button class="pill ghost" id="jMail" type="button">Email Jerry</button> <span class="msg" id="jMsg"></span></div>
@@ -230,7 +230,7 @@ async function cLoad(){ try{ const R=await cRows();
       box.querySelector('.list').innerHTML=(grp('ai','Suggestions: the AI assistant')+grp('public','Suggestions: public understanding of planning')+grp('forum','Suggestions: a resident forum')+grp('consult','Suggestions: lower barriers to consultation')+grp('other','Suggestions: something else')+grp('planning','Earlier suggestions: planning-facing')+grp('resident','Earlier suggestions: resident-facing'))||'<p class="msg">Nothing added yet.</p>'; }
     else box.querySelector('.list').innerHTML=xs.map(item).join('')||'<p class="msg">Nothing added yet.</p>'; });
   const js=R.filter(x=>x.t==='join');
-  $('jList').innerHTML=js.map(x=>'<div class="citem"><p><b>'+esc(x.author)+'</b>'+(x.aff?', '+esc(x.aff):'')+'</p>'+(x.bring&&x.bring.length?'<p class="who">Brings: '+x.bring.map(esc).join(', ')+'</p>':'')+(x.note?'<p>'+esc(x.note)+'</p>':'')+'</div>').join('')||'<p class="msg">No one yet. Be the first.</p>';
+  $('jList').innerHTML=js.map(x=>'<div class="citem"><p><b>'+esc(x.author)+'</b>'+(x.aff?', '+esc(x.aff):'')+'</p>'+(x.bring&&x.bring.length?'<p class="who">Could contribute: '+x.bring.map(esc).join(', ')+'</p>':'')+(x.note?'<p>'+esc(x.note)+'</p>':'')+'</div>').join('')||'<p class="msg">No one yet. Be the first.</p>';
  }catch(_){} }
 cLoad(); setInterval(cLoad,30000);
 </script></body></html>
