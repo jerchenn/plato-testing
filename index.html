@@ -64,13 +64,19 @@ footer{padding:28px 0;color:var(--mute);font-size:.85rem}
 <section id="future"><div class="wrap">
   <h2>Future work</h2>
   <p class="lead">Directions we see from the project so far. Add your own below; every suggestion is visible to the group.</p>
-  <div class="tasks" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+  <h3 style="margin-top:18px">Planning-facing</h3>
+  <div class="tasks" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))">
     <div class="task"><span class="tag">Evaluation</span><h3>Test the answers</h3><p>Benchmark the assistant's answers against planners' own answers to the same questions, and check that every cited passage supports what the answer says.</p></div>
-    <div class="task"><span class="tag">Residents</span><h3>Close the feedback loop</h3><p>Let residents comment on proposals in PLATO, and analyse those comments so planners receive them as structured evidence.</p></div>
     <div class="task"><span class="tag">Monitoring</span><h3>Plan against delivery</h3><p>Track over time how what is approved and built compares with what the plan set out, site by site and service by service.</p></div>
-    <div class="task"><span class="tag">Coverage</span><h3>Beyond Greater Cambridge</h3><p>Apply the same pipeline to other local plan areas, and learn what has to change when the documents and data differ.</p></div>
-    <div class="task"><span class="tag">Open data</span><h3>Release the evidence base</h3><p>Publish the annotated planning text and the domain classifier so others can reuse and test them.</p></div>
     <div class="task"><span class="tag">Practice</span><h3>Human judgement in the workflow</h3><p>Study where planners need to check, override or add to what the system produces, and design the tool around those points.</p></div>
+    <div class="task"><span class="tag">Coverage</span><h3>Beyond Greater Cambridge</h3><p>Apply the same pipeline to other local plan areas, and learn what has to change when the documents and data differ.</p></div>
+  </div>
+  <h3 style="margin-top:22px">Resident-facing</h3>
+  <div class="tasks" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))">
+    <div class="task"><span class="tag">Participation</span><h3>Close the feedback loop</h3><p>Let residents comment on proposals in PLATO, and analyse those comments so planners receive them as structured evidence.</p></div>
+    <div class="task"><span class="tag">Plain language</span><h3>Explain what is proposed</h3><p>Turn a proposal into a short account of what will be built, where, when, and with which schools, health care and transport.</p></div>
+    <div class="task"><span class="tag">Near me</span><h3>Start from where people live</h3><p>Let residents enter a street or postcode and see the applications, allocations and services around them.</p></div>
+    <div class="task"><span class="tag">Trust</span><h3>Open evidence</h3><p>Show the source behind every answer, and publish the annotated planning text and classifier so anyone can check them.</p></div>
   </div>
   <div class="contrib" data-kind="future" data-f1="Your suggestion" data-f2="Why it matters, or who would use it"></div>
 </div></section>
@@ -231,10 +237,10 @@ const EXC='plato-consortium';
 async function cRows(){ const r=await fetch(CFG.url+'/rest/v1/posts?select=author,body,created_at&course=eq.'+COURSE+'&exercise=eq.'+EXC+'&order=created_at.desc',{headers:H}); return (await r.json()).map(p=>{ try{ return {...JSON.parse(p.body),author:p.author,at:p.created_at}; }catch(_){ return null; } }).filter(Boolean); }
 async function cPost(obj,author){ const r=await fetch(CFG.url+'/rest/v1/posts',{method:'POST',headers:{...H,Prefer:'return=minimal'},body:JSON.stringify({course:COURSE,exercise:EXC,author:author||null,body:JSON.stringify(obj)})}); return r.ok; }
 document.querySelectorAll('.contrib').forEach(box=>{ const k=box.dataset.kind;
-  box.innerHTML='<form onsubmit="return false"><div class="row"><label>Name (optional)</label><input type="text" class="cn" maxlength="60"></div><div class="two"><textarea class="c1" maxlength="600" placeholder="'+box.dataset.f1+'"></textarea><textarea class="c2" maxlength="600" placeholder="'+box.dataset.f2+'"></textarea></div><div class="row"><button class="pill cg">Add</button><span class="msg cm"></span></div></form><div class="list"></div>';
+  box.innerHTML='<form onsubmit="return false"><div class="row"><label>Name (optional)</label><input type="text" class="cn" maxlength="60">'+(k==='future'?' <label>For</label><select class="cgp"><option value="planning">Planning-facing</option><option value="resident">Resident-facing</option></select>':'')+'</div><div class="two"><textarea class="c1" maxlength="600" placeholder="'+box.dataset.f1+'"></textarea><textarea class="c2" maxlength="600" placeholder="'+box.dataset.f2+'"></textarea></div><div class="row"><button class="pill cg">Add</button><span class="msg cm"></span></div></form><div class="list"></div>';
   box.querySelector('.cg').onclick=async()=>{ const a=box.querySelector('.c1').value.trim(), b=box.querySelector('.c2').value.trim(), n=box.querySelector('.cn').value.trim();
     if(a.length<5){ box.querySelector('.cm').textContent='Write a few words first.'; return; } box.querySelector('.cm').textContent='Sending';
-    const ok=await cPost({t:k,a,b},n).catch(()=>false); box.querySelector('.cm').textContent=ok?'Added. Thank you.':'That did not send. Try again in a moment.'; if(ok){ box.querySelector('.c1').value=''; box.querySelector('.c2').value=''; cLoad(); } }; });
+    const g=box.querySelector('.cgp')?box.querySelector('.cgp').value:null; const ok=await cPost({t:k,a,b,g},n).catch(()=>false); box.querySelector('.cm').textContent=ok?'Added. Thank you.':'That did not send. Try again in a moment.'; if(ok){ box.querySelector('.c1').value=''; box.querySelector('.c2').value=''; cLoad(); } }; });
 const JC=['Data','Domain expertise','Methods','Software','Test sites or partners','Funding ideas','Student projects'];
 $('jChips').innerHTML=JC.map(c=>'<label class="feat"><input type="checkbox" value="'+c+'"><span>'+c+'</span></label>').join('');
 $('jGo').onclick=async()=>{ const n=$('jName').value.trim(); if(!n){ $('jMsg').textContent='Add your name to join.'; return; }
@@ -244,7 +250,10 @@ $('jGo').onclick=async()=>{ const n=$('jName').value.trim(); if(!n){ $('jMsg').t
 $('jMail').onclick=()=>{ location.href='mailto:'+['jc2205','cam.ac.uk'].join('@')+'?subject='+encodeURIComponent('PLATO consortium'); };
 async function cLoad(){ try{ const R=await cRows();
   document.querySelectorAll('.contrib').forEach(box=>{ const xs=R.filter(x=>x.t===box.dataset.kind);
-    box.querySelector('.list').innerHTML=xs.map(x=>'<div class="citem"><p>'+esc(x.a)+'</p>'+(x.b?'<p>'+esc(x.b)+'</p>':'')+'<span class="who">'+esc(x.author||'Anonymous')+'</span></div>').join('')||'<p class="msg">Nothing added yet.</p>'; });
+    const item=x=>'<div class="citem"><p>'+esc(x.a)+'</p>'+(x.b?'<p>'+esc(x.b)+'</p>':'')+'<span class="who">'+esc(x.author||'Anonymous')+'</span></div>';
+    if(box.dataset.kind==='future'){ const grp=(g,t)=>{ const ys=xs.filter(x=>(x.g||'planning')===g); return ys.length?'<h4 style="margin:14px 0 4px;font-weight:500">'+t+'</h4>'+ys.map(item).join(''):''; };
+      box.querySelector('.list').innerHTML=(grp('planning','Suggestions: planning-facing')+grp('resident','Suggestions: resident-facing'))||'<p class="msg">Nothing added yet.</p>'; }
+    else box.querySelector('.list').innerHTML=xs.map(item).join('')||'<p class="msg">Nothing added yet.</p>'; });
   const js=R.filter(x=>x.t==='join');
   $('jList').innerHTML=js.map(x=>'<div class="citem"><p><b>'+esc(x.author)+'</b>'+(x.aff?', '+esc(x.aff):'')+'</p>'+(x.bring&&x.bring.length?'<p class="who">Brings: '+x.bring.map(esc).join(', ')+'</p>':'')+(x.note?'<p>'+esc(x.note)+'</p>':'')+'</div>').join('')||'<p class="msg">No one yet. Be the first.</p>';
  }catch(_){} }
